@@ -11,6 +11,13 @@ This Java program generates a list of random numbers within a specified range, f
 
 ## Usage
 1. Clone the repository.
-2. Compile the Java program using:
+2. Compile the Java program using --> javac RandomNumberSorter.java
+3. Run the program using --> java RandomNumberSorter
    ```sh
-   javac RandomNumberSorter.java
+   OutPut:
+   
+   Random numbers between 1 and 100 that are multiples of 2 and 5:
+   [20, 40, 50, 60, 80, 100]
+   Sorted numbers based on tens place:
+   [20, 40, 50, 60, 80, 100]
+
