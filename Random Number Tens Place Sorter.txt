@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+
+// Comparator to sort numbers based on the tens place
+class TensPlaceComparator implements Comparator<Integer> {
+    @Override
+    public int compare(Integer num1, Integer num2) {
+        int tensPlace1 = num1 / 10 % 10;
+        int tensPlace2 = num2 / 10 % 10;
+        return Integer.compare(tensPlace1, tensPlace2);
+    }
+}
+
+public class RandomNumberSorter {
+    public static void main(String[] args) {
+        int min = 1;
+        int max = 100;
+        int count = 20;
+
+        // Generate random numbers
+        List<Integer> randomNumbers = generateRandomNumbers(min, max, count);
+        // Filter numbers that are multiples of both 2 and 5
+        List<Integer> filteredNumbers = filterMultiplesOf2And5(randomNumbers);
+
+        System.out.println("Random numbers between " + min + " and " + max + " that are multiples of 2 and 5:");
+        System.out.println(filteredNumbers);
+
+        // Sort the filtered numbers based on the tens place
+        Collections.sort(filteredNumbers, new TensPlaceComparator());
+        System.out.println("Sorted numbers based on tens place:");
+        System.out.println(filteredNumbers);
+    }
+
+    // Generate a list of random numbers
+    private static List<Integer> generateRandomNumbers(int min, int max, int count) {
+        List<Integer> numbers = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            numbers.add(random.nextInt(max - min + 1) + min);
+        }
+        return numbers;
+    }
+
+    // Filter numbers that are multiples of both 2 and 5
+    private static List<Integer> filterMultiplesOf2And5(List<Integer> numbers) {
+        List<Integer> filteredNumbers = new ArrayList<>();
+        for (int num : numbers) {
+            if (num % 2 == 0 && num % 5 == 0) {
+                filteredNumbers.add(num);
+            }
+        }
+        return filteredNumbers;
+    }
+}
